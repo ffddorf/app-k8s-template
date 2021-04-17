@@ -32,9 +32,3 @@ provider "helm" {
     token = data.terraform_remote_state.kubernetes.outputs.k8s_api_token
   }
 }
-
-resource "kubernetes_namespace" "demo" {
-  metadata {
-    name = "demo"
-  }
-}
