@@ -7,7 +7,7 @@ locals {
 
 terraform {
   backend "remote" {
-    organization = "ffddorf"
+    organization = "ffddorf-dev"
 
     workspaces {
       prefix = "app-k8s-template-" # Change to app-your-thing-
