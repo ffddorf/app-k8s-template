@@ -10,7 +10,7 @@ terraform {
     organization = "ffddorf"
 
     workspaces {
-      prefix = "app-${local.app_name}-"
+      prefix = "app-k8s-template-" # Change to app-your-thing-
     }
   }
 }
