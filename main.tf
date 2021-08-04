@@ -1,13 +1,3 @@
-terraform {
-  backend "remote" {
-    organization = "ffddorf"
-
-    workspaces {
-      prefix = "app-k8s-template-" # Change to app-your-thing-
-    }
-  }
-}
-
 # If applied as is, this template would put up an empty Nginx site at https://k8s-template.dev.dorf.world/
 
 locals {
@@ -15,9 +5,19 @@ locals {
   host = "k8s-template.dev.dorf.world" # Change to your-thing.dev.dorf.world
 }
 
+terraform {
+  backend "remote" {
+    organization = "ffddorf"
+
+    workspaces {
+      prefix = "app-${local.app_name}-"
+    }
+  }
+}
+
 resource "kubernetes_namespace" "app" {
   metadata {
-    name = "app-k8s-template"
+    name = "app-${local.app_name}"
   }
 }
 
@@ -68,7 +68,6 @@ resource "kubernetes_service" "app" {
     selector = {
       k8s_app = local.app_name
     }
-    type = "NodePort"
   }
 }
 
