@@ -2,7 +2,7 @@ data "terraform_remote_state" "kubernetes" {
   backend = "remote"
 
   config = {
-    organization = "ffddorf"
+    organization = "ffddorf-dev"
     workspaces = {
       name = "k3os-on-proxmox"
     }
