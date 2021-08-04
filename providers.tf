@@ -19,13 +19,6 @@ provider "kubernetes" {
   token = data.terraform_remote_state.kubernetes.outputs.k8s_api_token
 }
 
-provider "kubernetes-alpha" {
-  host  = local.kubernetes_api_url
-  token = data.terraform_remote_state.kubernetes.outputs.k8s_api_token
-
-  server_side_planning = true
-}
-
 provider "helm" {
   kubernetes {
     host  = local.kubernetes_api_url
